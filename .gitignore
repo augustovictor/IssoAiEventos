@@ -9,6 +9,10 @@
 /dist
 /tags
 
+# Ignorar pastas gerenciadas pelo Composer #
+/app/Plugin/*
+/app/Vendor/*
+
 # OS generated files #
 ######################
 .DS_Store
