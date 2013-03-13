@@ -110,3 +110,4 @@ CakeLog::config('error', array(
 
 // Carrega o plugin do Debug Kit
 CakePlugin::load('DebugKit');
+CakePlugin::load(array('CakePtbr' => array('bootstrap' => true)));

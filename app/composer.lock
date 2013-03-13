@@ -1,5 +1,5 @@
 {
-    "hash": "0dec2e3ced216363b1d5581b1dddf6ce",
+    "hash": "553973965bd9318d2fcd888e08236a4b",
     "packages": [
         {
             "name": "cakephp/debug_kit",
@@ -120,15 +120,52 @@
                 "zend"
             ],
             "time": "2013-03-02 22:45:58"
+        },
+        {
+            "name": "jrbasso/cake_ptbr",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jrbasso/cake_ptbr.git",
+                "reference": "7a19fadca12630e8e3efed39b9299d5caaf5682d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jrbasso/cake_ptbr/zipball/7a19fadca12630e8e3efed39b9299d5caaf5682d",
+                "reference": "7a19fadca12630e8e3efed39b9299d5caaf5682d",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "cakephp-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Juan Basso",
+                    "email": "jrbasso@gmail.com",
+                    "homepage": "http://blog.cakephp-brasil.org"
+                }
+            ],
+            "description": "Repositório com arquivos para deixar seu Cake falando português.",
+            "homepage": "http://github.com/jrbasso/cake_ptbr",
+            "time": "2012-12-20 13:51:24"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cakephp/debug_kit": 20
+        "cakephp/debug_kit": 20,
+        "jrbasso/cake_ptbr": 20
     },
     "platform": [
 
