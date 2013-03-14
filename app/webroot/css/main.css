@@ -1,0 +1,12 @@
+#SlideShow .item {
+    height: 300px;
+    border: solid 1px #CCC;
+}
+
+ol.carousel-indicators li {
+    background: lightgrey;
+}
+
+ol.carousel-indicators li.active {
+    background: grey;
+}

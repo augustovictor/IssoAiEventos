@@ -110,4 +110,19 @@ CakeLog::config('error', array(
 
 // Carrega o plugin do Debug Kit
 CakePlugin::load('DebugKit');
+// Tradução para pt-br
 CakePlugin::load(array('CakePtbr' => array('bootstrap' => true)));
+
+// Formulários no padrão do Bootstrap
+Configure::write('Form.Options', array(
+    'class' => 'form-inline',
+    'inputDefaults' => array(
+        'class' => 'input-xlarge',
+        'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
+        'div' => array('class' => 'control-group'),
+        'label' => array('class' => 'control-label'),
+        'between' => '<div class="controls">',
+        'after' => '</div>',
+        'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
+    )
+));
