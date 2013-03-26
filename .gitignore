@@ -10,8 +10,13 @@
 /tags
 
 # Ignorar pastas gerenciadas pelo Composer #
+############################################
 /app/Plugin/*
 /app/Vendor/*
+
+# Ignorar arquivo de configuração do Plugin do Facebook #
+#########################################################
+/app/Config/facebook.php
 
 # OS generated files #
 ######################

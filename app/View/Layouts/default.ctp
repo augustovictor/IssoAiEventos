@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<?php echo $this->Facebook->html(); ?>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -22,18 +22,7 @@
 <body>
 	<div class="container">
 		<div id="header">
-            <ol class="nav nav-pills pull-right">
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Organizador</a></li>
-            </ol>
-            
-            <h3 class="muted logotipo">Isso Aí Eventos</h3>
-            
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#">Acadêmicos</a></li>
-                <li><a href="#">Profissionais</a></li>
-                <li><a href="#">Shows/Festas</a></li>
-            </ul>
+            <?php echo $this->element('header'); ?>
 		</div>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
@@ -50,4 +39,5 @@
 		</div>
 	</div>
 </body>
+<?php echo $this->Facebook->init(); ?>
 </html>
