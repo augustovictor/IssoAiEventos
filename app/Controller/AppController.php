@@ -35,12 +35,8 @@ class AppController extends Controller {
     public $components = array('DebugKit.Toolbar', 'Session',
             'Auth' => array(
                 'loginAction' => array(
-                    'controller' => 'usuarios',
+                    'controller' => 'organizadores',
                     'action' => 'login',
-                ),
-                'logoutAction' => array(
-                    'controller' => 'usuarios',
-                    'action' => 'logout',
                 ),
                 'authenticate' => array(
                     'Form' => array(
@@ -52,7 +48,7 @@ class AppController extends Controller {
             ),
             'Facebook.Connect' => array('model' => 'Participante')
         );
-    public $helpers = array('Facebook.Facebook');
+    public $helpers = array('Facebook.Facebook', 'Site');
     
     public function isAuthorized($user = null) {
         return true;
