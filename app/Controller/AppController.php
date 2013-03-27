@@ -32,6 +32,41 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    // Adiciona a toolbar do Debug Kit
-    public $components = array('DebugKit.Toolbar');
+    public $components = array('DebugKit.Toolbar', 'Session',
+            'Auth' => array(
+                'loginAction' => array(
+                    'controller' => 'organizadores',
+                    'action' => 'login',
+                ),
+                'authenticate' => array(
+                    'Form' => array(
+                        'userModel' => 'Usuario',
+                        'fields' => array('username' => 'email', 'password' => 'senha')
+                    )
+                ),
+                'authorize' => 'Controller'
+            ),
+            'Facebook.Connect' => array('model' => 'Participante')
+        );
+    public $helpers = array('Facebook.Facebook', 'Site');
+    
+    public function isAuthorized($user = null) {
+        return true;
+    }
+    
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('display', 'login', 'register');
+    }
+    
+    public function beforeRender() {
+        parent::beforeRender();
+        $this->set('loggedIn', $this->Auth->loggedIn());
+    }
+    
+    public function beforeFacebookSave(){
+        $this->Connect->authUser['Participante']['nome'] = $this->Connect->user('name');
+        $this->Connect->authUser['Participante']['email'] = $this->Connect->user('email');
+        return true; //Must return true or will not save.
+    }
 }
