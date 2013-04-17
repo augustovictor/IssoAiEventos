@@ -1,11 +1,11 @@
 <?php
-App::uses('Participante', 'Model');
+App::uses('Localizacao', 'Model');
 
 /**
- * Participante Test Case
+ * Localizacao Test Case
  *
  */
-class ParticipanteTest extends CakeTestCase {
+class LocalizacaoTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,13 +13,13 @@ class ParticipanteTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.participante',
+		'app.localizacao',
+		'app.evento',
+		'app.organizador',
 		'app.usuario',
 		'app.administrador',
-		'app.organizador',
 		'app.plano',
-		'app.evento',
-		'app.localizacao',
+		'app.participante',
 		'app.eventos_participante'
 	);
 
@@ -30,7 +30,7 @@ class ParticipanteTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Participante = ClassRegistry::init('Participante');
+		$this->Localizacao = ClassRegistry::init('Localizacao');
 	}
 
 /**
@@ -39,7 +39,7 @@ class ParticipanteTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Participante);
+		unset($this->Localizacao);
 
 		parent::tearDown();
 	}

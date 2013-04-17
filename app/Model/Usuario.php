@@ -51,6 +51,14 @@ class Usuario extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'confirmar_senha' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+			),
+			'confirmarSenha' => array(
+				'rule' => array('confirmarSenha'),
+			),
+		),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -76,4 +84,25 @@ class Usuario extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	public function confirmarSenha($check) {
+		return $this->data['Usuario']['senha'] == $this->data['Usuario']['confirmar_senha'];
+	}
+	
+    public function beforeValidate($options = array()) {
+		parent::beforeValidate($options);
+        if ($this->data['Usuario']['data_nascimento'][2] == '/') {
+            // Converter a data de nascimento para formato do banco de dados
+            $data_nascimento = $this->data['Usuario']['data_nascimento'];
+            $data = explode('/', $data_nascimento);
+            $this->data['Usuario']['data_nascimento'] = implode('-', array_reverse($data));
+        }
+	}
+    
+	public function beforeSave($options = array()) {
+		parent::beforeSave($options);
+        if (!empty($this->data['Usuario']['senha'])) {
+            $this->data['Usuario']['senha'] = AuthComponent::password($this->data['Usuario']['senha']);
+        }
+	}
 }

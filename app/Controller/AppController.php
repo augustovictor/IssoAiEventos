@@ -44,11 +44,11 @@ class AppController extends Controller {
                         'fields' => array('username' => 'email', 'password' => 'senha')
                     )
                 ),
-                'authorize' => 'Controller'
+                //'authorize' => 'Controller'
             ),
-            'Facebook.Connect' => array('model' => 'Participante')
+            //'Facebook.Connect' => array('model' => 'Participante')
         );
-    public $helpers = array('Facebook.Facebook', 'Site');
+    public $helpers = array('Site');
     
     public function isAuthorized($user = null) {
         return true;
@@ -56,7 +56,7 @@ class AppController extends Controller {
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('display', 'login', 'register');
+        $this->Auth->allow();
     }
     
     public function beforeRender() {

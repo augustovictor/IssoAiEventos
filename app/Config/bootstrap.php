@@ -113,7 +113,7 @@ CakePlugin::load('DebugKit');
 // Tradução para pt-br
 CakePlugin::load(array('CakePtbr' => array('bootstrap' => true)));
 // Plugin do Facebook
-CakePlugin::load('Facebook');
+// CakePlugin::load('Facebook');
 
 // Formulários no padrão do Bootstrap
 Configure::write('Form.inputDefaults', array(

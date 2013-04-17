@@ -1,35 +1,48 @@
 <div class="btn-toolbar pull-right">
-    
     <?php if (!$loggedIn): ?>
     
     <div class="btn-group">
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Login <i class="caret"></i></a>
         <ul class="dropdown-menu">
-            <li><?php echo $this->Facebook->login(array(
-                'perms' => 'email,publish_stream',
-                'redirect' => $this->Html->url(array('controller' => 'participantes', 'action' => 'login'), true),
-                'label' => 'Participante')); ?>
-            </li>
-            <li><a href="#">Organizador</a></li>
+            <li><a href="#" id="participante_login_link">Participante</a></li>
+            <li><?php echo $this->Html->link('Organizador',
+					array('controller' => 'organizadores', 'action' => 'login')) ?></li>
         </ul>
     </div>
-    <a href="#" class="btn pull-right">Cadastro</a>
+    <?php echo $this->Html->link("Cadastro",
+			array('controller' => 'organizadores', 'action' => 'add'),
+			array('class' => 'btn')); ?>
     
-    <?php else: ?>
+    <?php elseif(AuthComponent::user('facebook_id')): ?>
     
     <div class="btn-group">
-        <?= $this->Facebook->picture(AuthComponent::user('facebook_id'), array('size' => 'square', 'facebook-logo' => false, 'width' => 30, 'height' => 30)); ?>
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><?= AuthComponent::user('nome'); ?> <i class="caret"></i></a>
+        <img src="" width="30" height="30" id="profile_picture" />
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <?= AuthComponent::user('nome'); ?> <i class="caret"></i>
+        </a>
         <ul class="dropdown-menu">
-            <li><a>Meu Perfil</a></li>
+            <li><a>Meu perfil</a></li>
             <li class="divider"></li>
-            <li><?php echo $this->Facebook->disconnect(array(
-                'redirect' => array('controller' => 'participantes', 'action' => 'logout'),
-                'confirm' => 'Desconectar de Isso Aí Eventos?')); ?>
+            <li><?= $this->Html->link('Logout',
+                    array('controller' => 'participantes', 'action' => 'logout')); ?>
             </li>
         </ul>
     </div>
     
+	<?php else: ?>
+	
+	<div class="btn-group">
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><?= AuthComponent::user('nome'); ?> <i class="caret"></i></a>
+        <ul class="dropdown-menu">
+            <li><?php echo $this->Html->link('Painel',
+					array('controller' => 'organizadores', 'action' => 'painel')) ?></li>
+            <li class="divider"></li>
+            <li><?php echo $this->Html->link('Logout',
+                array('controller' => 'usuarios', 'action' => 'logout')); ?>
+            </li>
+        </ul>
+    </div>
+	
     <?php endif; ?>
     
 </div>
