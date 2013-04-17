@@ -19,7 +19,7 @@ IssoAiApp
 
  - banco de dados
 
- - A configuração do banco é feita no arquivo app/Config/Database.php. Caso não exista, deve-se copiar o arquivo app/Config/Database.php.example e renomeá-lo para Database.php.
+ - A configuração do banco é feita no arquivo app/Config/Database.php. Caso não exista, deve-se copiar o arquivo app/Config/Database.php.default e renomeá-lo para Database.php.
  - A configuração do banco é feita em um array associativo:
 
 		public $default = array(
@@ -41,6 +41,10 @@ IssoAiApp
 
  - O comando deve ser executado no diretório app.
  - O esquema do banco de dados também está disponível no arquivo app/Config/Schema/schema.sql
+ 
+ - Login com Facebook
+ 
+ - Para utilizar o login com facebook, é necessário criar um aplicativo do facebook, anotar os valores AppId e Secret, renomear o arquivo app/Config/facebook.php.example para facebook.php e mudar os valores "appId" e "secret" para os respectivos valores do aplicativo do facebook. Demais valores no arquivo podem ser ignorados.
  
 4. integrantes
  - Bruno Paulino
