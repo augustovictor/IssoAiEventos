@@ -12,6 +12,11 @@ class UsuariosController extends AppController {
     public function login() {
         
     }
+	
+	public function logout() {
+		$this->Auth->logout();
+		$this->redirect('/');
+	}
     
     public function register() {
         

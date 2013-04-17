@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php echo $this->Facebook->html(); ?>
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -20,6 +20,7 @@
 	?>
 </head>
 <body>
+    <?= $this->element('facebook'); ?>
 	<div class="container">
 		<div id="header">
             <?php echo $this->element('header'); ?>
@@ -39,5 +40,4 @@
 		</div>
 	</div>
 </body>
-<?php echo $this->Facebook->init(); ?>
 </html>

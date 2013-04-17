@@ -3,26 +3,35 @@ App::uses('AppModel', 'Model');
 /**
  * Participante Model
  *
+ * @property Usuario $Usuario
  * @property Evento $Evento
  */
 class Participante extends AppModel {
 
 /**
- * Primary key field
+ * Validation rules
  *
- * @var string
+ * @var array
  */
-	public $primaryKey = 'facebook_id';
-
-/**
- * Display field
- *
- * @var string
- */
-	public $displayField = 'nome';
-
+	public $validate = array(
+	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Usuario' => array(
+			'className' => 'Usuario',
+			'foreignKey' => 'usuario_id',
+			'conditions' => array('Usuario.papel' => 'participante'),
+			'fields' => '',
+			'order' => ''
+		)
+	);
 
 /**
  * hasAndBelongsToMany associations
