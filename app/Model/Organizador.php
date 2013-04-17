@@ -26,7 +26,7 @@ class Organizador extends AppModel {
 		'Usuario' => array(
 			'className' => 'Usuario',
 			'foreignKey' => 'usuario_id',
-			'conditions' => '',
+			'conditions' => array('Usuario.papel' => 'organizador'),
 			'fields' => '',
 			'order' => ''
 		),

@@ -49,6 +49,7 @@ class OrganizadoresController extends AppController {
  */
 	public function add() {
 		if ($this->request->is('post')) {
+            $this->request->data['Usuario']['papel'] = 'organizador';
 			$this->Organizador->create();
 			if ($this->Organizador->saveAssociated($this->request->data)) {
 				$this->Session->setFlash(__('The organizador has been saved'));
@@ -76,7 +77,10 @@ class OrganizadoresController extends AppController {
  * @return void
  */
 	public function edit() {
-		$id = $this->Auth->user('Usuario.id');
+		$usuario_id = $this->Auth->user('id');
+        $organizador = $this->Organizador->findByUsuarioId($usuario_id);
+        $id = $organizador['Organizador']['id'];
+        
 		if (!$this->Organizador->exists($id)) {
 			throw new NotFoundException(__('Invalid organizador'));
 		}
@@ -88,8 +92,11 @@ class OrganizadoresController extends AppController {
 				$this->Session->setFlash(__('The organizador could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Organizador.' . $this->Organizador->primaryKey => $id));
+			$options = array('conditions' => array('Organizador.id' => $id));
 			$this->request->data = $this->Organizador->find('first', $options);
+            unset($this->request->data['Usuario']['senha']);
+            $this->request->data['Usuario']['data_nascimento'] =
+                    date('d/m/Y', strtotime($this->request->data['Usuario']['data_nascimento']));
 		}
 		$planos = $this->Organizador->Plano->find('list');
 		$this->set(compact('planos'));
