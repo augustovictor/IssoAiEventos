@@ -10,29 +10,28 @@ IssoAiApp
  - O sistema possui cadastro de usuários com os perfis de Participante, Organizador e Administrador, login de Participante através do Facebook, cadastro de eventos* e inscrição em eventos*
 
 3. configuração
-
-### Instalação ###
+ - Instalação
 
  - As dependências do projeto são gerenciadas pelo composer. Para a instalação das dependências, deve-se efetuar os seguintes procedimentos:
     
     $ cd app    
     $ php composer.phar install
 
-### banco de dados ###
+ - banco de dados
 
  - A configuração do banco é feita no arquivo app/Config/Database.php. Caso não exista, deve-se copiar o arquivo app/Config/Database.php.example e renomeá-lo para Database.php.
  - A configuração do banco é feita em um array associativo:
 
-    public $default = array(
-                              'datasource' => 'Database/Mysql',
-		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'database_name',
-		'prefix' => '',
-		//'encoding' => 'utf8',
-	);
+		public $default = array(
+    		'datasource' => 'Database/Mysql',
+			'persistent' => false,
+			'host' => 'localhost',
+			'login' => 'user',
+			'password' => 'password',
+			'database' => 'database_name',
+			'prefix' => '',
+			//'encoding' => 'utf8',
+		);
 
  - Deve-se lembrar de remover o comentário da linha 'encoding' => 'utf8',
 
